@@ -1,6 +1,6 @@
 def get_option(prompt_msg="Option"):
-    return prompt_msg.strip().lower()
+    return ' '.join(prompt_msg.split()).upper()
 
 
-message = input("Please enter the prompt message")
-print(get_option(message))
+msg = input("Please enter the prompt message")
+print(get_option(msg))
