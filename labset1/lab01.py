@@ -1,10 +1,11 @@
-def display_as_list(display_items=list, message='Item', counter_reqd=True):
+def display_as_list(display_items: list, message='Item', counter_reqd=True):
     if len(display_items) == 0:
         print("Sorry, the list is empty.")
         return False
+    print()
     for index, item in enumerate(display_items, start=1):
         if counter_reqd:
-            print(f"\n{message} {index}: {item}")
+            print(f"{message} {index}: {item}")
         else:
             print(item)
     return True

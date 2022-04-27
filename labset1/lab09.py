@@ -1,19 +1,14 @@
-from calendar import formatstring
-from lab3 import get_item
+from lab03 import get_item
 
 
-def count_instances(user_list=list):
+def count_instances(user_list: list):
     if len(user_list) == 0:
         print("Sorry, the list is empty.")
         return False
     item = get_item("Please enter the item to be counted: ")
     count = user_list.count(item)
-    if count == 1:
-        print("There is 1 instance of [{}] in the list".format(item))
-    else:
-        print
-        print("There are {} instances of [{}] in the list.".format(
-            count, item))
+    print(f"There is 1 instance of [{item}] in the list") if count == 1 else print(
+        f"There are {count} instances of [{item}] in the list.")
     return True
 
 

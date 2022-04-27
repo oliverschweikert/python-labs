@@ -1,6 +1,6 @@
-from lab2 import get_option
-from lab3 import get_item
-from lab4 import get_total_items
+from lab02 import get_option
+from lab03 import get_item
+from lab04 import get_total_items
 
 
 def add_item(user_list: list):

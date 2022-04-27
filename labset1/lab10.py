@@ -45,60 +45,45 @@ def remove_item(user_list: list):
     if len(user_list) == 0:
         print("Sorry, the list is empty.")
         return False
-    else:
+    option = get_option(
+        "Please enter the item number of the item to remove or 0 to cancel: ")
+    while not option.isdigit() or int(option) < 0:
+        print("The item number must be a positive integer.")
         option = get_option(
             "Please enter the item number of the item to remove or 0 to cancel: ")
-        while not option.isdigit():
-            print("The item number must be a positive integer.")
-            option = get_option(
-                "Please enter the item number of the item to remove or 0 to cancel: ")
-        if option == '0':
-            print("Remove request cancelled.")
-            return False
-        elif int(option) < 1 or int(option) > len(user_list):
-            print("Sorry, item {} does not exist in the list".format(option))
-            return False
-        else:
-            while True:
-                user_input = get_option("Are you sure (y/n)?")
-                if user_input == 'y':
-                    item = user_list.pop(int(option)-1)
-                    print(
-                        "Item {} [{}] has been removed from the list.".format(option, item))
-                    return True
-                elif user_input == 'n':
-                    print("Item {} [{}] was not removed from the list.".format(
-                        option, user_list[int(option)-1]))
-                    return False
-                else:
-                    print("Please enter either 'y' or 'n'")
-                    print(user_input)
+    if option == '0':
+        print("Remove request cancelled.")
+        return False
+    if int(option) > len(user_list):
+        print(f"Sorry, item {option} does not exist in the list")
+        return False
+    if get_option("Are you sure (y/n)?") != 'y':
+        print(
+            f"Item {option} [{user_list[int(option)-1]}] was not removed from the list.")
+        return False
+    print(
+        f"Item {option} [{user_list.pop(int(option)-1)}] has been removed from the list.")
+    return True
 
 
 def sort_list(user_list: list):
-    if len(user_list) == 0:
-        print("Sorry, the list is empty.")
-        return False
-    elif len(user_list) == 1:
-        print("There is only one item in the list, the list does not need to be sorted.")
-        return False
-    else:
+    if len(user_list) > 1:
         user_list.sort()
         print("The list has been sorted.")
         return True
+    print("Sorry, the list is empty.") if len(user_list) == 0 else print(
+        "There is only one item in the list, the list does not need to be sorted.")
+    return False
 
 
 def empty_list(user_list: list):
-    if len(user_list) == 0:
-        print("Sorry, the list is empty")
-        return False
-    if get_option("Please confirm that you want to empty the list (y/n): ") == 'y':
+    if len(user_list) != 0 and get_option("Please confirm that you want to empty the list (y/n): ") == 'y':
         user_list.clear()
         print("All the items have been removed from the list.")
         return True
-    else:
-        print("The list has not been emptied.")
-        return False
+    print("Sorry, the list is empty") if len(
+        user_list) == 0 else print("The list has not been emptied.")
+    return False
 
 
 def count_instances(user_list: list):
@@ -107,12 +92,8 @@ def count_instances(user_list: list):
         return False
     item = get_item("Please enter the item to be counted: ")
     count = user_list.count(item)
-    if count == 1:
-        print("There is 1 instance of [{}] in the list".format(item))
-    else:
-        print
-        print("There are {} instances of [{}] in the list.".format(
-            count, item))
+    print(f"There is 1 instance of [{item}] in the list") if count == 1 else print(
+        f"There are {count} instances of [{item}] in the list.")
     return True
 
 

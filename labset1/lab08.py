@@ -1,17 +1,14 @@
-from lab2 import get_option
+from lab02 import get_option
 
 
-def empty_list(user_list=list):
-    if len(user_list) == 0:
-        print("Sorry, the list is empty")
-        return False
-    if get_option("Please confirm that you want to empty the list (y/n): ") == 'y':
+def empty_list(user_list: list):
+    if len(user_list) != 0 and get_option("Please confirm that you want to empty the list (y/n): ") == 'y':
         user_list.clear()
         print("All the items have been removed from the list.")
         return True
-    else:
-        print("The list has not been emptied.")
-        return False
+    print("Sorry, the list is empty") if len(
+        user_list) == 0 else print("The list has not been emptied.")
+    return False
 
 
 def Test1():

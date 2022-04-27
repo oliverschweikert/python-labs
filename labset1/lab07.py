@@ -1,17 +1,11 @@
-from collections import UserList
-
-
-def sort_list(user_list):
-    if len(user_list) == 0:
-        print("Sorry, the list is empty.")
-        return False
-    elif len(user_list) == 1:
-        print("There is only one item in the list, the list does not need to be sorted.")
-        return False
-    else:
+def sort_list(user_list: list):
+    if len(user_list) > 1:
         user_list.sort()
         print("The list has been sorted.")
         return True
+    print("Sorry, the list is empty.") if len(user_list) == 0 else print(
+        "There is only one item in the list, the list does not need to be sorted.")
+    return False
 
 
 def Test1():
