@@ -3,7 +3,7 @@ from lab3 import get_item
 from lab4 import get_total_items
 
 
-def add_item(user_list):
+def add_item(user_list=list):
     item = get_item("Please enter the item to be added: ")
     if item == '':
         print("No item was entered.")
@@ -12,7 +12,7 @@ def add_item(user_list):
     elif item in user_list:
         while True:
             user_choice = get_option(
-                "[{}] is already in the list, please confirm that you want to add another (y/n): ".format(item))
+                f"[{item}] is already in the list, please confirm that you want to add another (y/n): ")
             if user_choice == 'y':
                 user_list.append(item)
                 print("[{}] has been added to the list.".format(item))

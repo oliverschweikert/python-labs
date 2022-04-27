@@ -1,14 +1,13 @@
-def display_as_list(display_items, message='Item', counter_reqd=True):
+def display_as_list(display_items=list, message='Item', counter_reqd=True):
     if len(display_items) == 0:
         print("Sorry, the list is empty.")
         return False
-    else:
-        print()
-        for item in display_items:
-            if counter_reqd:
-                print(message, item)
-            else:
-                print(item)
+    for item in display_items:
+        if counter_reqd:
+            print(f"\n{message} {item}")
+        else:
+            print(item)
+    return True
 
 
 def Test1():
