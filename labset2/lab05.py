@@ -15,10 +15,10 @@ def add_edit_contact(contacts: dict):
                 f"{name} already has the number {number}. The number has not been changed.")
             return False
         contacts[name] = number
-        print(f"{name} has been updated with the number: {number}")
+        print(f"{name} has been updated with the number: {number}.")
         return True
     contacts[name] = get_number_as_string("Contact number: ", 3)
-    print(f"{name} has been added with the number: {contacts[name]}")
+    print(f"{name} has been added with the number: {contacts[name]}.")
     return True
 
 
